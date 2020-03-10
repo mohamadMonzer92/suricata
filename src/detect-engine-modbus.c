@@ -114,7 +114,7 @@ static int DetectEngineInspectModbusData(ModbusTransaction  *tx,
         else
             value = tx->data[0];
     } else if (type & MODBUS_TYP_MULTIPLE) {
-        int i, size = (int) sizeof(tx->data);
+        int i, size = tx->write.quantity; //(int) sizeof(tx->data);
 
         offset = address - (tx->write.address + 1);
 
